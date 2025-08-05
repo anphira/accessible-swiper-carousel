@@ -10,7 +10,7 @@
 }
 
 .accessible-swiper-carousel .slide-content {
-    padding: 40px;
+    padding: 40px 60px;
     min-height: 200px;
     display: flex;
     flex-direction: column;
@@ -23,11 +23,11 @@
     width: 44px;
     height: 44px;
     margin-top: -22px;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 50%;
     border: none;
-    color: white;
-    font-size: 18px;
+    color: black;
+    font-size: 24px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -39,7 +39,7 @@
 .accessible-swiper-carousel .swiper-button-prev:hover,
 .accessible-swiper-carousel .swiper-button-next:hover {
     background: rgba(0, 0, 0, 0.9);
-    transform: scale(1.1);
+    color: white;
 }
 
 .accessible-swiper-carousel .swiper-button-prev:focus,
@@ -54,11 +54,11 @@
 }
 
 .accessible-swiper-carousel .swiper-button-prev {
-    left: 10px;
+    left: 5px;
 }
 
 .accessible-swiper-carousel .swiper-button-next {
-    right: 10px;
+    right: 5px;
 }
 
 /* Pagination */
