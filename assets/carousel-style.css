@@ -1,0 +1,124 @@
+/* Accessible Swiper Carousel Styles */
+
+.accessible-swiper-carousel {
+    position: relative;
+}
+
+.accessible-swiper-carousel .swiper {
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.accessible-swiper-carousel .slide-content {
+    padding: 40px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Navigation buttons */
+.accessible-swiper-carousel .swiper-button-prev,
+.accessible-swiper-carousel .swiper-button-next {
+    width: 44px;
+    height: 44px;
+    margin-top: -22px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.accessible-swiper-carousel .swiper-button-prev:hover,
+.accessible-swiper-carousel .swiper-button-next:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+.accessible-swiper-carousel .swiper-button-prev:focus,
+.accessible-swiper-carousel .swiper-button-next:focus {
+    outline: 2px solid #0073aa;
+    outline-offset: 2px;
+}
+
+.accessible-swiper-carousel .swiper-button-prev::after,
+.accessible-swiper-carousel .swiper-button-next::after {
+    display: none;
+}
+
+.accessible-swiper-carousel .swiper-button-prev {
+    left: 10px;
+}
+
+.accessible-swiper-carousel .swiper-button-next {
+    right: 10px;
+}
+
+/* Pagination */
+.accessible-swiper-carousel .swiper-pagination {
+    bottom: 10px;
+}
+
+.accessible-swiper-carousel .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.accessible-swiper-carousel .swiper-pagination-bullet:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.2);
+}
+
+.accessible-swiper-carousel .swiper-pagination-bullet-active {
+    background: #0073aa;
+}
+
+/* Pause/Play button */
+.accessible-swiper-carousel .carousel-controls {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.accessible-swiper-carousel .pause-play-btn {
+    background: #0073aa;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.accessible-swiper-carousel .pause-play-btn:hover {
+    background: #005a87;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .accessible-swiper-carousel .slide-content {
+        padding: 30px 40px;
+        min-height: 150px;
+    }
+    
+    .accessible-swiper-carousel .swiper-button-prev,
+    .accessible-swiper-carousel .swiper-button-next {
+        width: 36px;
+        height: 36px;
+        margin-top: -18px;
+        font-size: 16px;
+    }
+}
