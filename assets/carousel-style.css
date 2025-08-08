@@ -4,13 +4,13 @@
     position: relative;
 }
 
-.accessible-swiper-carousel .swiper {
-    overflow: hidden;
-    border-radius: 8px;
+.accessible-swiper-carousel{
+    padding-left: 60px;
+    padding-right: 60px;
 }
 
 .accessible-swiper-carousel .slide-content {
-    padding: 40px 60px;
+    padding: 40px 20px;
     min-height: 200px;
     display: flex;
     flex-direction: column;
@@ -20,14 +20,13 @@
 /* Navigation buttons */
 .accessible-swiper-carousel .swiper-button-prev,
 .accessible-swiper-carousel .swiper-button-next {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     margin-top: -22px;
     background: rgba(255, 255, 255, 0.8);
     border-radius: 50%;
     border: none;
     color: black;
-    font-size: 24px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -35,11 +34,23 @@
     align-items: center;
     justify-content: center;
 }
+.accessible-swiper-carousel .swiper-button-prev > span,
+.accessible-swiper-carousel .swiper-button-next > span {
+    height: 30px;
+}
+.accessible-swiper-carousel .swiper-button-prev svg,
+.accessible-swiper-carousel .swiper-button-next svg {
+    width: 30px;
+}
 
 .accessible-swiper-carousel .swiper-button-prev:hover,
 .accessible-swiper-carousel .swiper-button-next:hover {
     background: rgba(0, 0, 0, 0.9);
     color: white;
+}
+.accessible-swiper-carousel .swiper-button-prev:hover svg,
+.accessible-swiper-carousel .swiper-button-next:hover svg {
+    fill: white;
 }
 
 .accessible-swiper-carousel .swiper-button-prev:focus,

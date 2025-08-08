@@ -3,7 +3,7 @@
  * Plugin Name: Accessible Swiper Carousel for Elementor
  * Plugin URI: https://easya11yguide.com
  * Description: Adds an accessible Swiper carousel widget to Elementor that allows any content inside.
- * Version: 1.0.2
+ * Version: 1.0.11
  * Author: Anphira, LLC
  * Text Domain: accessible-swiper-carousel
  * Requires at least: 5.0
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-define('ASC_VERSION', '1.0.2');
+define('ASC_VERSION', '1.0.11');
 define('ASC_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('ASC_PLUGIN_PATH', plugin_dir_path(__FILE__));
 
