@@ -24,27 +24,77 @@ function initializeAccessibleCarousels() {
         
         const swiper = new Swiper(swiperElement, config);
         
+        // Function to manage slide visibility for screen readers
+        function updateSlideVisibility() {
+            const slides = swiper.slides;
+            const activeIndex = swiper.activeIndex;
+            const slidesPerView = swiper.params.slidesPerView === 'auto' ? 
+                swiper.slidesPerViewDynamic() : swiper.params.slidesPerView;
+            
+            slides.forEach(function(slide, index) {
+                // Determine if slide is currently visible
+                const isVisible = index >= activeIndex && index < (activeIndex + slidesPerView);
+                
+                if (isVisible) {
+                    // Make visible slides accessible
+                    slide.removeAttribute('aria-hidden');
+                    slide.removeAttribute('inert');
+                    
+                    // Restore focus to content within visible slides
+                    const focusableElements = slide.querySelectorAll('a, button, input, textarea, select, [tabindex]');
+                    focusableElements.forEach(function(el) {
+                        const originalTabIndex = el.dataset.originalTabindex;
+                        if (originalTabIndex !== undefined) {
+                            el.setAttribute('tabindex', originalTabIndex);
+                            delete el.dataset.originalTabindex;
+                        }
+                    });
+                } else {
+                    // Hide non-visible slides from screen readers
+                    slide.setAttribute('aria-hidden', 'true');
+                    
+                    // Store original tabindex and remove from tab order
+                    const focusableElements = slide.querySelectorAll('a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])');
+                    focusableElements.forEach(function(el) {
+                        if (!el.dataset.originalTabindex) {
+                            el.dataset.originalTabindex = el.getAttribute('tabindex') || '0';
+                        }
+                        el.setAttribute('tabindex', '-1');
+                    });
+                }
+            });
+        }
+        
+        // Wait for Swiper to fully initialize before managing visibility
+        swiper.on('init', function() {
+            setTimeout(updateSlideVisibility, 100);
+        });
+        
         // Accessibility enhancements
         swiper.on('slideChange', function() {
-            const activeSlide = swiper.slides[swiper.activeIndex];
             const totalSlides = swiper.slides.length;
             
-            if (activeSlide) {
-                activeSlide.setAttribute('aria-label', 
-                    'Slide ' + (swiper.realIndex + 1) + ' of ' + totalSlides);
-            }
+            // Update slide visibility after slide change
+            setTimeout(updateSlideVisibility, 50);
             
             // Announce slide change to screen readers
             const announcement = document.createElement('div');
             announcement.setAttribute('aria-live', 'polite');
             announcement.setAttribute('aria-atomic', 'true');
             announcement.className = 'sr-only';
-            announcement.textContent = 'Showing slide ' + (swiper.realIndex + 1) + ' of ' + totalSlides;
+            announcement.textContent = 'Slide ' + (swiper.activeIndex + 1) + ' of ' + totalSlides + ' visible';
             
             document.body.appendChild(announcement);
             setTimeout(function() {
-                document.body.removeChild(announcement);
-            }, 1000);
+                if (document.body.contains(announcement)) {
+                    document.body.removeChild(announcement);
+                }
+            }, 1500);
+        });
+        
+        // Update visibility when slides are updated
+        swiper.on('slidesUpdated', function() {
+            setTimeout(updateSlideVisibility, 50);
         });
         
         // Pause on focus within carousel

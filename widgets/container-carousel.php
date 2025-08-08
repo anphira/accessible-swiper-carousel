@@ -377,7 +377,7 @@ class ASC_Container_Carousel extends \Elementor\Widget_Base {
                     $slides = $settings['slides_list'];
                     if (!empty($slides)) {
                         foreach ($slides as $index => $slide) {
-                            echo '<div class="swiper-slide" aria-label="' . sprintf(__('Slide %d', 'accessible-swiper-carousel'), $index + 1) . '">';
+                            echo '<div class="swiper-slide" aria-label="Slide ' . sprintf(__('Slide %d', 'accessible-swiper-carousel'), $index + 1) . '">';
                             echo '<div class="slide-content">';
                             
                             switch ($slide['content_type']) {

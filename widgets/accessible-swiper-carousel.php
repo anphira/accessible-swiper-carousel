@@ -238,7 +238,7 @@ class ASC_Accessible_Swiper_Carousel extends \Elementor\Widget_Base {
                     $slides = $settings['slides_content'];
                     if (!empty($slides)) {
                         foreach ($slides as $index => $slide) {
-                            echo '<div class="swiper-slide" role="group" aria-label="' . sprintf(__('Slide %d', 'accessible-swiper-carousel'), $index + 1) . '">';
+                            echo '<div class="swiper-slide" role="group" aria-label="Slide ' . sprintf(__('Slide %d', 'accessible-swiper-carousel'), $index + 1) . '">';
                             echo '<div class="slide-content">';
                             echo $slide['slide_content'];
                             echo '</div>';
